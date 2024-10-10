@@ -1,0 +1,368 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="styles.css">  
+    <title>Guate Fauna</title> 
+    <style>
+        body {  
+            font-family: Arial, sans-serif;  
+            background-color: #000;  
+            color: #fff;  
+            margin: 0;  
+        }  
+        footer{
+            background-color: #000; 
+            align-items: center; 
+        }
+
+        header {  
+            display: flex;  
+            justify-content: space-between;  
+            align-items: center;  
+            padding: 20px;  
+            background-color: #1a1a1a;  
+        }  
+
+        .logo {  
+            font-size: 24px;  
+            font-weight: bold;  
+        }
+
+        .imagen {
+             margin-left: -280px;
+        }  
+
+        .pequeño{
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        nav ul {  
+            list-style: none;  
+            display: flex;  
+            gap: 20px;  /*crea un espacio entre elementos para un contenedor.*/
+            padding-left: 0; /* Elimina el padding innecesario */
+        }  
+
+        nav ul li {  
+            cursor: pointer;  
+        }  
+
+        ul li a {  
+            position: relative;  /* posiciona el elemento según su ubicación original*/
+            text-decoration: none;  
+            line-height: 1em;  
+            letter-spacing: 2px;  
+            text-transform: uppercase; /*Transforma la letra en mayuscula*/ 
+            color: transparent;  
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);  /* agrega un borde blanco semitransparente de 1 píxel al texto.*/
+        }  
+
+        ul li a::before {  
+            content: attr(data-text);   /*muestra el valor del atributo data-text como contenido.*/
+            position: absolute;  
+            color: var(--clr);  
+            width: 0;  
+            overflow: hidden;  
+            transition: 1s;  
+            border-right: 8px solid var(--clr);   /* agrega un borde derecho de 8 píxeles de grosor y del color definido en la variable --clr.*/
+            -webkit-text-stroke: 1px var(--clr);   /*aplica un borde de 1 píxel del color de --clr*/
+        }  
+
+        ul li a:hover::before {  
+            width: 100%;  
+            filter: drop-shadow(0 0 25px var(--clr));  /* aplica una sombra difusa de 25 píxeles en el color de --clr*/
+        }
+
+        .hero {  
+            text-align: center;  
+            padding: 50px 20px;  
+            background: url('img/lago2.jpg') no-repeat center center/cover; /* Imagen de fondo ajustada */
+            color: #fff;  
+            position: relative; /* Para controlar el contenido sobre el fondo */
+        }  
+
+
+
+        .hero h1 {  
+            font-size: 36px;  
+        }  
+
+        .hero p {  
+            font-size: 18px;  
+            margin: 20px 0;  
+        }  
+
+        *, *::before, *::after {  
+            margin: 0;  
+            padding: 0;  
+            box-sizing: border-box;  
+            font-family: 'Poppins', sans-serif;  
+        }
+
+        hr {
+            border: 1px solid #fff;
+        }
+
+        .parrafo1{
+           width: 100%; /* Controla el ancho del contenido */
+            
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente para el texto */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .negro{
+            color:black;
+        }
+
+        .titulo{
+           width: 50%; /* Controla el ancho del contenido */
+            max-width: 600px; /* Limita el ancho máximo */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left; /* Alinea el texto a la izquierda */
+            margin-left: 0; /* Mueve el contenido hacia la orilla izquierda */
+            margin-right: auto; /* Asegura que el párrafo quede a la izquierda */
+        }
+
+        .redes{
+         margin-left: 1200px;    
+        }
+
+        .redes2{
+         margin-left: 1080px; 
+         margin-bottom: -25px;   
+        }
+
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        .card-container{
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap; /* Evita que los elementos se ajusten en varias filas */
+            margin-top: 100px
+        }
+
+        .card{
+            width: 325px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+            margin: 20px;
+        }
+
+        .card img{
+            width: 100%;
+            height: auto;
+        }
+
+        .card-content{
+            padding: 16px;
+        }
+
+        .card-content h3{
+            font-size: 28px;
+            margin-bottom: 8px
+        }
+
+        .card-content p{
+            color: #666;
+            font-size: 15px;
+            line-height: 1.3;
+        }
+        
+        .card-content .btn{
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 16px;
+            color: #fff;
+        }
+
+        @media (max-width: 480px) {
+    .main-content {
+        flex-direction: column; /* Asegura que el contenido se apile en teléfonos */
+    }
+
+     .card-container {
+        flex-direction: column; /* Cambia la dirección a columna */
+        align-items: center;    /* Centra las tarjetas horizontalmente */
+    }
+
+    .card-content {
+        padding: 16px;  /* Añade un poco de espacio alrededor del contenido de la tarjeta */
+    }
+
+    .card {
+        width: 90%;  /* Ajusta las tarjetas para que ocupen casi todo el ancho de la pantalla */
+        margin: 10px 0;  /* Añade un poco de margen entre las tarjetas */
+    }
+
+    .card img {
+        width: 100%; /* Asegura que las imágenes también ocupen todo el ancho de la tarjeta */
+    }
+
+    h3 {
+        font-size: 18px;  /* Ajusta el tamaño de los títulos para que sean más legibles en móviles */
+    }
+
+    p {
+        font-size: 14px;  /* Ajusta el tamaño del texto del párrafo */
+    }
+
+
+    .logo {  
+        font-size: 18px;  
+        font-weight: bold;  
+        }
+
+    .imagen {
+        margin-left: -25px;
+        }
+
+    nav ul {
+        flex-direction: column;  /* Cambia a columna en móviles */
+        align-items: center;      /* Centra los elementos */
+        padding: 0;              /* Elimina el padding */
+    }
+
+    nav ul li {
+        margin: 10px 0;         /* Espacio entre elementos de la navegación */
+    }
+
+    .parrafo1, .parrafo2 {
+        width: 90%;  
+        padding: 10px;  
+    }  
+
+    h1 {
+        font-size: 24px;  
+    }  
+
+     h3 {
+        font-size: 10px;  
+    }  
+
+    p {
+        font-size: 10px;  
+    }  
+
+    .hero {  
+        padding: 20px; /* Reduce padding */  
+    }  
+
+      .card {
+        width: 90%; /* Asegúrate de que las tarjetas ocupen el 90% del ancho */
+        margin: 10px; /* Reduce el margen en móviles */
+    }
+
+    .titulo {  
+        font-size: 20px; /* Adjust title size */  
+    }  
+
+      footer {
+        text-align: center; /* Centra el texto en el footer */
+        padding: 20px; /* Agrega padding para que no se vea apretado */
+    }
+
+    .redes, .redes2 {
+        margin: 0; /* Elimina márgenes para que no se vean juntos */
+        display: flex;
+        justify-content: center; /* Centra los íconos de redes sociales */
+        gap: 10px; /* Agrega espacio entre los íconos */
+    }
+}
+
+}
+
+
+ 
+    </style>
+</head>    
+<body>  
+    <header>  
+        <div class="logo">Guatemala Fauna</div>
+        <img class="imagen" width="30px" src="img/logo.png" alt="Logo"> 
+        <nav>
+            <ul>
+                <li style="--clr:#00ade1">
+                    <a href="index.html" data-text="&nbsp;Inicio">&nbsp;Inicio&nbsp;</a>
+                </li>
+                <li style="--clr:#ff6493">
+                    <a href="comida.html" data-text="&nbsp;Comidas">&nbsp;Comidas&nbsp;</a>
+                </li>
+                <li style="--clr:#0033a0">
+                    <a href="tradiciones.html" data-text="&nbsp;Tradiciones">&nbsp;Tradiciones&nbsp;</a>
+                </li>
+                <li style="--clr:#008d6b">
+                    <a href="costumbres.html" data-text="&nbsp;Costumbres">&nbsp;Costumbres&nbsp;</a>
+                </li>
+                <li style="--clr:#00ade1">
+                    <a href="lugares.html" data-text="&nbsp;Lugares">&nbsp;Lugares&nbsp;</a>
+                </li>
+                <li style="--clr:#ff6493">
+                    <a href="municipios.html" data-text="&nbsp;Municipios">&nbsp;Municipios&nbsp;</a>
+                </li>
+            </ul> 
+        </nav> 
+    </header>  
+    <hr> 
+    <section class="hero">
+        <h1>Tradiciones</h1>
+        <p class="parrafo1">Las tradiciones de Izabal, Guatemala, fusionan influencias indígenas y mestizas, destacándose por sus celebraciones, danzas y una rica gastronomía que reflejan su patrimonio cultural. Aqui hay 3 grandes ejemplos de sus grandes Tradiciones:
+       <div class="card-container">
+           <div class="card">
+            <img src="img/Santa.jpg">
+            <div class="card-content">
+                <h3>El festival de la Feria de Livingston</h3>
+                <p>La fiesta patronal del municipio de Livingston se caracteriza principalmente por la presentación de diversas danzas de origen garífuna. Este municipio está localizado en la región norte del departamento de Izabal.<a href="https://www.facebook.com/media/set/?set=a.1936105819943455&type=3&_rdr" class="btn" target="_blank">Leer mas</a>
+            </div>     
+           </div>
+           <div class="card">
+            <img src="img/santa.jpeg">
+            <div class="card-content">
+                <h3>Semana Santa en Izabal</h3>
+                <p>Las procesiones religiosas, acompañadas de música y participación comunitaria, son una mezcla de la tradición católica con elementos culturales locales. En algunos lugares se integran también danzas y tradiciones mayas y garífunas.
+                <a href="https://www.prensalibre.com/hemeroteca/semana-santa-en-livingston-izabal/" class="btn" target="_blank">Leer mas</a>
+            </div>     
+           </div>
+           <div class="card">
+            <img src="img/feria.jpg">
+            <div class="card-content">
+                <h3>La Feria de Puerto Barrios</h3>
+                <p>sta feria incluye actividades como desfiles, procesiones religiosas, eventos culturales y deportivos, y un ambiente festivo con música, comidas típicas y juegos.
+                <a href="https://www.facebook.com/p/Feria-del-Mar-Puerto-Barrios-100091795940784/?locale=es_LA" class="btn" target="_blank">Leer mas</a>
+            </div>     
+           </div>
+       </div>
+    </section> 
+    <footer>
+        <h3> Copyright de: Diego Lopez C4A</h3>
+        <p class="redes2">redes sociales: 
+    <div class="redes"> 
+        <nav>
+            <a href="https://www.instagram.com/" target="_blank" >
+                <img src="img/insta.ico" width="30px" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/?locale=es_LA" target="_blank" >
+                <img src="img/face.ico" width="30px" alt="Facebook">
+            </a>
+            <a href="https://x.com/?lang=es&mx=2" target="_blank" >
+                <img src="img/x.jpg"    width="30px"   alt="Twitter">
+            </a>
+        </nav>
+    </div>
+    </footer> 
+</body>  
+</html>

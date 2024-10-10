@@ -1,0 +1,304 @@
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="styles.css">  
+    <title>Guate Fauna</title> 
+    <style>
+        body {  
+            font-family: Arial, sans-serif;  
+            background-color: #000;  
+            color: #fff;  
+            margin: 0;  
+        }  
+        footer{
+            background-color: #000; 
+            align-items: center; 
+        }
+
+        header {  
+            display: flex;  
+            justify-content: space-between;  /*distribuye los elementos dejando espacio igual entre ellos.*/
+            align-items: center;  
+            padding: 20px;  
+            background-color: #1a1a1a;  
+        }  
+
+        .logo {  
+            font-size: 24px;  
+            font-weight: bold;  
+        }
+
+        .imagen {
+             margin-left: -280px;
+        }  
+
+        .mapa {
+        max-width: 100%; /* Asegura que la imagen no se salga de la pantalla */
+        height: auto;    /* Mantiene la proporción de la imagen */
+        display: block;  /* Hace que la imagen se comporte como un bloque */
+        margin: 20px auto; /* Centra la imagen horizontalmente y agrega espacio arriba y abajo */
+        }
+
+        nav ul {  
+            list-style: none;  
+            display: flex;  
+            gap: 20px;  /*crea un espacio entre elementos para un contenedor.*/
+            padding-left: 0; /* Elimina el padding innecesario */
+        }  
+
+        nav ul li {  
+            cursor: pointer;  
+        }  
+
+        ul li a {  
+            position: relative;  
+            text-decoration: none;  
+            line-height: 1em;  
+            letter-spacing: 2px;  
+            text-transform: uppercase;  /*convierte el texto a mayúsculas.*/
+            color: transparent;  
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);  /* agrega un borde blanco semitransparente de 1 píxel al texto.*/
+        }  
+
+        ul li a::before {  
+            content: attr(data-text);  /*muestra el valor del atributo data-text como contenido.*/
+            position: absolute;  
+            color: var(--clr);  
+            width: 0;  
+            overflow: hidden;  
+            transition: 1s;  
+            border-right: 8px solid var(--clr);  /* agrega un borde derecho de 8 píxeles de grosor y del color definido en la variable --clr.*/
+            -webkit-text-stroke: 1px var(--clr);  /*aplica un borde de 1 píxel del color de --clr*/
+        }  
+
+        ul li a:hover::before {  
+            width: 100%;  
+            filter: drop-shadow(0 0 25px var(--clr));  /* aplica una sombra difusa de 25 píxeles en el color de --clr*/
+        }
+
+        .hero {  
+            text-align: center;  
+            padding: 50px 20px;  
+            background: url('img/lago2.jpg') no-repeat center center/cover; /* Imagen de fondo ajustada */
+            color: #fff;  
+            position: relative; /* Para controlar el contenido sobre el fondo */
+        }  
+
+
+        .hero h1 {  
+            font-size: 36px;  
+        }  
+
+
+        *, *::before, *::after {  
+            margin: 0;  
+            padding: 0;  
+            box-sizing: border-box;  
+            font-family: 'Poppins', sans-serif;  
+        }
+
+        hr {
+            border: 1px solid #fff;
+        }
+
+        .parrafo1{
+           width: 80%; /* Controla el ancho del contenido */
+            max-width: 1500px; /* Limita el ancho máximo */
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente para el texto */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center; /* Alinea el texto a la izquierda */
+            margin: 0 auto;
+        }
+
+        .parrafo2 {
+            width: 50%; /* Controla el ancho del contenido */
+            max-width: 600px; /* Limita el ancho máximo */
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente para el texto */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center; /* Alinea el texto al centro */
+            position: absolute; /* Posición absoluta para controlar el lugar exacto */
+            top: 50%; /* Ajusta la posición vertical */
+            right: 50px; /* Ajusta la posición horizontal */
+            transform: translateY(-50%); /* Centra verticalmente en la mitad de la pantalla */
+        }
+
+
+        .titulo{
+           text-align: center;
+           
+        }
+
+        .redes{
+         margin-left: 1200px;    
+        }
+
+        .redes2{
+         margin-left: 1080px; 
+         margin-bottom: -25px;   
+        }
+        
+        .video-container {  
+        display: flex;  
+        flex-direction: column; /* Apila el texto y el video verticalmente */  
+        align-items: center; /* Centra los elementos en el contenedor */  
+        margin-top: 20px; /* Agrega un poco de espacio arriba */  
+    }  
+
+        .video-container iframe {  
+            width: 100%; /* Asegúrate de que el video ocupe todo el ancho del contenedor */  
+            max-width: 560px; /* Limitamos el ancho máximo del iframe */  
+        }  
+
+        @media (max-width: 480px) {
+    .main-content {
+        flex-direction: column; /* Asegura que el contenido se apile en teléfonos */
+    }
+    
+    .logo {  
+        font-size: 18px;  
+        font-weight: bold;  
+        }
+
+    .imagen {
+        margin-left: -25px;
+        }
+
+    nav ul {
+        flex-direction: column;  /* Cambia a columna en móviles */
+        align-items: center;      /* Centra los elementos */
+        padding: 0;              /* Elimina el padding */
+    }
+
+    nav ul li {
+        margin: 10px 0;         /* Espacio entre elementos de la navegación */
+    }
+
+    .parrafo1, .parrafo2 {
+        width: 90%;  
+        padding: 10px;  
+    }  
+
+    h1 {
+        font-size: 24px;  
+    }  
+
+    p {
+        font-size: 16px;  
+    }  
+
+    .hero {  
+        padding: 20px; /* Reduce padding */  
+    }  
+
+
+    .titulo {  
+        font-size: 20px; /* Adjust title size */  
+    }  
+
+    .mapa {
+        max-width: 100%; /* Asegura que la imagen no se salga de la pantalla */
+        height: auto;    /* Mantiene la proporción de la imagen */
+        display: block;  /* Hace que la imagen se comporte como un bloque */
+        margin: 20px auto; /* Centra la imagen y agrega margen */
+    }
+
+      footer {
+        text-align: center; /* Centra el texto en el footer */
+        padding: 20px; /* Agrega padding para que no se vea apretado */
+    }
+
+    .redes, .redes2 {
+        margin: 0; /* Elimina márgenes para que no se vean juntos */
+        display: flex;
+        justify-content: center; /* Centra los íconos de redes sociales */
+        gap: 10px; /* Agrega espacio entre los íconos */
+    }
+}
+
+
+ 
+    </style>
+
+
+</head>    
+<body>  
+    <header>  
+        <div class="logo">Guatemala Fauna</div>
+        <img class="imagen" width="30px" src="img/logo.png" alt="Logo"> 
+        <nav>
+            <ul>
+                <li style="--clr:#00ade1">
+                    <a href="index.html" data-text="&nbsp;Inicio">&nbsp;Inicio&nbsp;</a>
+                </li>
+                <li style="--clr:#ff6493">
+                    <a href="comida.html" data-text="&nbsp;Comidas">&nbsp;Comidas&nbsp;</a>
+                </li>
+                <li style="--clr:#0033a0">
+                    <a href="tradiciones.html" data-text="&nbsp;Tradiciones">&nbsp;Tradiciones&nbsp;</a>
+                </li>
+                <li style="--clr:#008d6b">
+                    <a href="costumbres.html" data-text="&nbsp;Costumbres">&nbsp;Costumbres&nbsp;</a>
+                </li>
+                <li style="--clr:#00ade1">
+                    <a href="lugares.html" data-text="&nbsp;Lugares">&nbsp;Lugares&nbsp;</a>
+                </li>
+                <li style="--clr:#ff6493">
+                    <a href="municipios.html" data-text="&nbsp;Municipios">&nbsp;Municipios&nbsp;</a>
+                </li>
+            </ul> 
+        </nav> 
+    </header>  
+    <hr> 
+    <section class="hero">  
+        <h1 class="titulo">Municipios de Izabal</h1>  
+        <p class="parrafo1">El departamento de Izabal se ubica en la región nororiental de la República de Guatemala. Cuenta con una extensión territorial de 9 039 km² y su cabecera departamental es Puerto Barrios. Los paisajes de este territorio están decorados por palmeras ante la costa de mar azul.</p>
+        <hr>
+          <img src="img/mapa.jpg" class="mapa"  alt="Mapa de Izabal" usemap="#mapaIzabal" width="600px" class="mapa">
+
+           <map name="mapaIzabal">
+             <area shape="rect" coords="545,151,443,178" href="https://es.wikipedia.org/wiki/Puerto_Barrios" target="_blank" alt="Puerto Barrios">
+             <area shape="rect" coords="443,234,341,261" href="https://es.wikipedia.org/wiki/Morales_(Izabal)" target="_blank" alt="Morales">
+             <area shape="rect" coords="316,282,214,309" href="https://es.wikipedia.org/wiki/Los_Amates_(Izabal)" target="_blank" alt="Los Amates">
+             <area shape="rect" coords="156,179,54,206" href="https://es.wikipedia.org/wiki/El_Estor" target="_blank" alt="El Estor">
+             <area shape="rect" coords="316,88,214,115" href="https://es.wikipedia.org/wiki/Livingston_(Izabal)" target="_blank" alt="Livingston">
+            </map>
+
+
+        <h2 class="titulo">Curiosidades sobre los Municipios</h2>
+        <ul class="parrafo1"> 
+            <li>Puerto Barrios fue el centro de operaciones de la United Fruit Company, que exportaba bananas a nivel mundial. Este hecho marcó la economía y la infraestructura de la región durante el siglo XX.</li>
+            <li>ivingston es conocido por su población Garífuna, descendientes de africanos y caribeños. Es uno de los pocos lugares de Guatemala donde esta cultura afrocaribeña es prominente.</li>
+            <li>El Estor es conocido por sus yacimientos de níquel. La minería ha jugado un papel importante en la economía local, aunque también ha sido motivo de conflicto ambiental y social.</li>
+            <li>Morales es conocido por la producción agrícola, especialmente banano y palma africana, productos que se exportan desde los puertos cercanos.</li>
+            <li>Los Amates es el punto donde comienza el río que conecta el Lago de Izabal con el Mar Caribe. Esta área es famosa por su belleza natural y el castillo de San Felipe, una fortaleza construida por los españoles para protegerse de los piratas.</li>
+        </ul>
+        
+
+
+    
+    </section> 
+
+
+    <footer>
+        <h3> Copyright de: Diego Lopez C4A</h3>
+        <p class="redes2">redes sociales: 
+    <div class="redes"> 
+        <nav>
+            <a href="https://www.instagram.com/" target="_blank" >
+                <img src="img/insta.ico" width="30px" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/?locale=es_LA" target="_blank" >
+                <img src="img/face.ico" width="30px" alt="Facebook">
+            </a>
+            <a href="https://x.com/?lang=es&mx=2" target="_blank" >
+                <img src="img/x.jpg"    width="30px"   alt="Twitter">
+            </a>
+        </nav>
+    </div>
+    </footer> 
+</body>  
+</html>
